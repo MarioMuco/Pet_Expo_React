@@ -22,9 +22,9 @@ function AnimalGallery() {
     <div id="categories">
       {animals.map(animal => (
         <div className="card_desc" key={animal.id}>
-          <img src={animal.image} alt={animal.name} />
+          <img src={`/assets/${category}/${animal.name.replace(/\s/g, '')}.jpg`} alt={animal.name.replace(/\s/g, '')} class="img"/>
           <h4>{animal.name}</h4>
-          <p>{category === 'birds' ? animal.place_of_found: animal.origin}</p>
+          <p>{category === 'birds' ? animal.place_of_found : animal.origin}</p>
         </div>
       ))}
     </div>

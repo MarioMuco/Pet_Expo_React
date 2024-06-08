@@ -62,7 +62,12 @@ a {
   margin-bottom: 20px;
 }
 
-.card img {
+.card img{
+  width: 100%;
+  height: auto;
+}
+
+.img {
   width: 100%;
   height: auto;
 }
