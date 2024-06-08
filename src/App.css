@@ -62,16 +62,8 @@ a {
   margin-bottom: 20px;
 }
 
-.card img{
-  width: 100%;
-  height: auto;
-}
-
-.img {
-  width: 100%;
-  height: auto;
-}
-
+.card img,
+.img,
 .card_desc img {
   width: 100%;
   height: auto;
@@ -91,10 +83,7 @@ a {
 }
 
 @media (max-width: 1024px) {
-  .card {
-    width: 35%;
-  }
-
+  .card,
   .card_desc {
     width: 35%;
   }
@@ -105,10 +94,7 @@ a {
 }
 
 @media (max-width: 768px) {
-  .card {
-    width: 80%;
-  }
-
+  .card,
   .card_desc {
     width: 80%;
   }
@@ -131,4 +117,72 @@ a {
 
 h3 {
   color: black;
+}
+
+.ReactModal__Content {
+  max-width: 70%;
+  max-height: 80%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.close-button {
+  background-color: #ff5e5e;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #ff2e2e;
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.modal-content img {
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px;
+  order: 1;
+}
+
+.text-content {
+  width: 55%;
+  margin: 10px;
+  order: 2;
+}
+
+.text-content p {
+  margin-bottom: 10px;
+  color: #555;
 }
