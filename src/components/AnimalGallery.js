@@ -9,6 +9,7 @@ function AnimalGallery() {
   const [animals, setAnimals] = useState([]);
   const [selectedAnimal, setSelectedAnimal] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const category = window.location.pathname.split('/').pop();
 
   useEffect(function fetchAnimalsOnMount() {
@@ -34,16 +35,32 @@ function AnimalGallery() {
     setModalIsOpen(false);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredAnimals = animals.filter(animal =>
+    animal.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div id="categories">
-      {animals.map(animal => (
-        <div className="card_desc" key={animal.id} onClick={() => openModal(animal)}>
-          <img src={`/assets/${category}/${animal.name.replace(/\s/g, '')}.jpg`} alt={animal.name.replace(/\s/g, '')} className="img"/>
-          <h4>{animal.name}</h4>
-          <p>{category === 'birds' ? animal.place_of_found : animal.origin}</p>
-        </div>
-      ))}
-      <AnimalModal isOpen={modalIsOpen} onRequestClose={closeModal} animal={selectedAnimal} />
+    <div>
+      <input
+        type="text"
+        placeholder="Search for an animal..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
+      <div id="categories">
+        {filteredAnimals.map(animal => (
+          <div className="card_desc" key={animal.id} onClick={() => openModal(animal)}>
+            <img src={`/assets/${category}/${animal.name.replace(/\s/g, '')}.jpg`} alt={animal.name.replace(/\s/g, '')} className="img"/>
+            <h4>{animal.name}</h4>
+            <p>{category === 'birds' ? animal.place_of_found : animal.origin}</p>
+          </div>
+        ))}
+        <AnimalModal isOpen={modalIsOpen} onRequestClose={closeModal} animal={selectedAnimal} />
+      </div>
     </div>
   );
 }

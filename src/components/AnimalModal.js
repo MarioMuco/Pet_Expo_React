@@ -40,3 +40,4 @@ const AnimalModal = ({ isOpen, onRequestClose, animal }) => {
 };
 
 export default AnimalModal;
+
